@@ -7,7 +7,7 @@
     <import resource="applicationContext-database.xml"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:META-INF/datasource/database.properties"/>
+          p:location="classpath:META-INF/datasource/hibernate.properties"/>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
           p:entityManagerFactory-ref="entityManagerFactory"/>
