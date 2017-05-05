@@ -7,6 +7,6 @@
     <import resource="applicationContext-services.xml"/>
     <import resource="applicationContext-web.xml"/>
 
-    <import resource="classpath:META-INF/datasource/applicationContext-hibernate.xml"/>
+    <import resource="classpath:META-INF/datasource/applicationContext-jpa.xml"/>
 
 </beans>
