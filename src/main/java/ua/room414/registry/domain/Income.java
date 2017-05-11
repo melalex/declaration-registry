@@ -1,9 +1,6 @@
 package ua.room414.registry.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -30,6 +27,8 @@ public class Income implements Serializable {
         BUSINESS_ACTIVITY,
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }

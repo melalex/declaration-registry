@@ -29,6 +29,8 @@ public class Vehicle implements Serializable {
         PLANE
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
