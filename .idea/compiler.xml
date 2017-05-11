@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="declaration-registry" />
         <module name="demographic-registry" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="declaration-registry" target="1.8" />
       <module name="demographic-registry" target="1.8" />
     </bytecodeTargetLevel>
   </component>

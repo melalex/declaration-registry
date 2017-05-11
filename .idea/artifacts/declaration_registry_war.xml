@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="declaration-registry:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="declaration-registry-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="declaration-registry:war exploded" />
+    </root>
+  </artifact>
+</component>
