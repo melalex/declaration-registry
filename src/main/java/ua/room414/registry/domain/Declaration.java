@@ -1,5 +1,7 @@
 package ua.room414.registry.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +9,8 @@ import java.util.List;
  * @author Alexander Melashchenko
  * @version 1.0 11 May 2017
  */
+@Entity
+@Table(name = "declaration")
 public class Declaration {
     private long id;
     private DocumentType documentType;
