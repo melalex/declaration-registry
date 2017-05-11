@@ -50,6 +50,7 @@ public class Declaration implements Serializable {
         this.id = id;
     }
 
+    @Enumerated
     @Column(name = "document_type")
     public DocumentType getDocumentType() {
         return documentType;
@@ -59,6 +60,7 @@ public class Declaration implements Serializable {
         this.documentType = documentType;
     }
 
+    @Enumerated
     @Column(name = "declaration_type")
     public DeclarationType getDeclarationType() {
         return declarationType;

@@ -2,6 +2,7 @@ package ua.room414.registry.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -37,6 +38,7 @@ public class Income implements Serializable {
         this.id = id;
     }
 
+    @Enumerated
     @Column(name = "income_type")
     public IncomeType getIncomeType() {
         return incomeType;
