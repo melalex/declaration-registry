@@ -11,26 +11,18 @@ import java.util.Date;
 @Entity
 @Table(name = "person")
 @SecondaryTables({
-        @SecondaryTable(name = "city", pkJoinColumns = @PrimaryKeyJoinColumn(name = "city_id")),
-        @SecondaryTable(name = "region", pkJoinColumns = @PrimaryKeyJoinColumn(name = "region_id")),
-        @SecondaryTable(name = "country", pkJoinColumns = @PrimaryKeyJoinColumn(name = "country_id")),
+        @SecondaryTable(name = "city", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "city_id")),
+        @SecondaryTable(name = "region", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "region_id")),
+        @SecondaryTable(name = "country", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "country_id")),
 })
 public class Person implements Serializable {
     private static final long serialVersionUID = -2331529055008543054L;
 
     private long id;
 
-    private long countryId;
-    private long regionId;
-    private long cityId;
-
-    private String country;
-    private String region;
-    private String city;
-    private String district;
-    private String street;
-    private String streetNumber;
-    private String apartmentNumber;
+    @Embedded
+    // TODO: config this
+    private Address address;
 
     private String firstName;
     private String middleName;
@@ -72,92 +64,12 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "country_id")
-    public long getCountryId() {
-        return countryId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setCountryId(long countryId) {
-        this.countryId = countryId;
-    }
-
-    @Column(name = "region_id")
-    public long getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(long regionId) {
-        this.regionId = regionId;
-    }
-
-    @Column(name = "city_id")
-    public long getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(long cityId) {
-        this.cityId = cityId;
-    }
-
-    @Column(table = "country", name = "name")
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Column(table = "region", name = "name")
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    @Column(table = "city", name = "name")
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    @Column(name = "street_number")
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-    }
-
-    @Column(name = "apartment_number")
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Column(name = "first_name")
@@ -242,15 +154,7 @@ public class Person implements Serializable {
         Person person = (Person) o;
 
         if (id != person.id) return false;
-        if (countryId != person.countryId) return false;
-        if (regionId != person.regionId) return false;
-        if (cityId != person.cityId) return false;
-        if (district != null ? !district.equals(person.district) : person.district != null) return false;
-        if (street != null ? !street.equals(person.street) : person.street != null) return false;
-        if (streetNumber != null ? !streetNumber.equals(person.streetNumber) : person.streetNumber != null)
-            return false;
-        if (apartmentNumber != null ? !apartmentNumber.equals(person.apartmentNumber) : person.apartmentNumber != null)
-            return false;
+        if (address != null ? !address.equals(person.address) : person.address != null) return false;
         if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
         if (middleName != null ? !middleName.equals(person.middleName) : person.middleName != null) return false;
         if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
@@ -265,13 +169,7 @@ public class Person implements Serializable {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (countryId ^ (countryId >>> 32));
-        result = 31 * result + (int) (regionId ^ (regionId >>> 32));
-        result = 31 * result + (int) (cityId ^ (cityId >>> 32));
-        result = 31 * result + (district != null ? district.hashCode() : 0);
-        result = 31 * result + (street != null ? street.hashCode() : 0);
-        result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
-        result = 31 * result + (apartmentNumber != null ? apartmentNumber.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
@@ -287,13 +185,7 @@ public class Person implements Serializable {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", country='" + country + '\'' +
-                ", region='" + region + '\'' +
-                ", city='" + city + '\'' +
-                ", district='" + district + '\'' +
-                ", street='" + street + '\'' +
-                ", streetNumber='" + streetNumber + '\'' +
-                ", apartmentNumber='" + apartmentNumber + '\'' +
+                ", address=" + address +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
