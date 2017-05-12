@@ -20,6 +20,8 @@ public class Person implements Serializable {
 
     private long id;
 
+    private long countryId;
+    private long regionId;
     private long cityId;
 
     private String country;
@@ -70,6 +72,23 @@ public class Person implements Serializable {
         this.id = id;
     }
 
+    @Column(name = "country_id")
+    public long getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(long countryId) {
+        this.countryId = countryId;
+    }
+
+    @Column(name = "region_id")
+    public long getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(long regionId) {
+        this.regionId = regionId;
+    }
 
     @Column(name = "city_id")
     public long getCityId() {
@@ -223,10 +242,9 @@ public class Person implements Serializable {
         Person person = (Person) o;
 
         if (id != person.id) return false;
+        if (countryId != person.countryId) return false;
+        if (regionId != person.regionId) return false;
         if (cityId != person.cityId) return false;
-        if (country != null ? !country.equals(person.country) : person.country != null) return false;
-        if (region != null ? !region.equals(person.region) : person.region != null) return false;
-        if (city != null ? !city.equals(person.city) : person.city != null) return false;
         if (district != null ? !district.equals(person.district) : person.district != null) return false;
         if (street != null ? !street.equals(person.street) : person.street != null) return false;
         if (streetNumber != null ? !streetNumber.equals(person.streetNumber) : person.streetNumber != null)
@@ -247,10 +265,9 @@ public class Person implements Serializable {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (int) (countryId ^ (countryId >>> 32));
+        result = 31 * result + (int) (regionId ^ (regionId >>> 32));
         result = 31 * result + (int) (cityId ^ (cityId >>> 32));
-        result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (region != null ? region.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (district != null ? district.hashCode() : 0);
         result = 31 * result + (street != null ? street.hashCode() : 0);
         result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
@@ -270,7 +287,6 @@ public class Person implements Serializable {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", cityId=" + cityId +
                 ", country='" + country + '\'' +
                 ", region='" + region + '\'' +
                 ", city='" + city + '\'' +
