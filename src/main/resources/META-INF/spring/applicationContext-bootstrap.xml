@@ -6,7 +6,7 @@
     <import resource="applicationContext-domain.xml"/>
     <import resource="applicationContext-persistence.xml"/>
     <import resource="applicationContext-services.xml"/>
-    <import resource="applicationContext-web.xml"/>
+    <import resource="applicationContext-facade.xml"/>
 
     <import resource="classpath:META-INF/spring/applicationContext-persistence.xml"/>
 

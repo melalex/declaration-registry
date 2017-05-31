@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.room414.registry</groupId>
-    <artifactId>declaration-registry</artifactId>
+    <artifactId>registry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>declaration-registry</name>
-    <description>Declaration registry project</description>
+    <name>registry</name>
+    <description>Registry project</description>
 
     <properties>
         <!-- Generic properties -->
@@ -33,6 +33,9 @@
         <hibernate.version>5.2.10.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
         <dbcp.version>2.1.1</dbcp.version>
+
+        <!-- Other -->
+        <guava.version>22.0</guava.version>
 
     </properties>
 
@@ -128,6 +131,13 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>${dbcp.version}</version>
+        </dependency>
+
+        <!-- Other -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
     </dependencies>
