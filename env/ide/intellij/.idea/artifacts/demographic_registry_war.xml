@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="demographic-registry:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="demographic-registry-0.0.1-SNAPSHOT.war">
-      <element id="artifact" artifact-name="demographic-registry:war exploded" />
-    </root>
-  </artifact>
-</component>
